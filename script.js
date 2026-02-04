@@ -207,47 +207,48 @@
     // URL del Backend: Cambiar esta URL cuando despliegues el servidor (ej. en Render/Railway)
     const API_URL = 'https://neffarsebastian1.onrender.com/send-email';
     const reservationForm = document.getElementById('reservation-form');
+
     if (reservationForm) {
-        reservationForm.addEventListener('submit', async (e) => {
+        reservationForm.addEventListener('submit', (e) => {
             e.preventDefault(); // Evitar recarga de página
 
             const submitBtn = reservationForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
 
-            // Estado de carga
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Enviando...";
-
-            // Obtener datos del formulario
+            // 1. OBTENER DATOS (Antes de limpiar el formulario)
             const formData = new FormData(reservationForm);
             const data = Object.fromEntries(formData.entries());
 
-            try {
-                const response = await fetch('http://localhost:3000/send-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
+            // 2. FEEDBACK INMEDIATO (Optimista)
+            // Le decimos al usuario que ya se envió, para que no espere los 50s del "Cold Start"
+            alert('✅ ¡Solicitud Recibida Supervisorialmente!\n\nTu reserva está en la cola de procesamiento del servidor.\nComo usamos un servicio gratuito, el correo de confirmación podría tardar unos minutos en llegar mientras el servidor despierta.\n\n¡Gracias por tu paciencia!');
+
+            reservationForm.reset(); // Limpiar formulario visualmente
+            submitBtn.disabled = false; // Dejar el botón habilitado por si quieren enviar otra
+
+            // 3. PROCESO EN SEGUNDO PLANO (Fire & Forget)
+            // El usuario ya sigue navegando, pero el navegador intenta enviar los datos
+            console.log("Iniciando envío en background...");
+
+            fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log("Resultado del servidor:", result);
+                    if (!result.success) {
+                        console.error("El servidor reportó un error:", result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error silencioso en background:', error);
+                    // No molestamos al usuario con el error porque ya le dijimos que fue exitoso.
+                    // Si falla real, tendrá que intentar luego, pero asumimos que el server despertará.
                 });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    alert('¡Reserva enviada con éxito! Revisa tu correo.');
-                    reservationForm.reset(); // Limpiar formulario
-                } else {
-                    alert('Hubo un problema al enviar la reserva: ' + (result.message || 'Error desconocido'));
-                }
-
-            } catch (error) {
-                console.error('Error de red:', error);
-                alert('No se pudo conectar con el servidor. Asegúrate de que el backend esté corriendo.');
-            } finally {
-                // Restaurar botón
-                submitBtn.disabled = false;
-                submitBtn.innerText = originalBtnText;
-            }
         });
     }
 
