@@ -3,7 +3,12 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
+// Root Route (Health Check) - Para ver si el server vive
+app.get('/', (req, res) => {
+    res.send('<h1>¡Servidor de Kilote Funcionando! 🚀</h1><p>El backend está activo y escuchando.</p>');
+});
 
 // --- CONFIGURACIÓN DE CORREO ---
 // REEMPLAZA ESTOS VALORES CON TU INFORMACIÓN REAL
