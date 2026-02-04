@@ -18,13 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configurar el "Transportador" de Nodemailer
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com', // Servidor explícito
+    port: 587,              // Puerto estándar para STARTTLS
+    secure: false,          // false para puerto 587
     auth: {
-        user: MY_EMAIL, // Tu correo (neffarseba@gmail.com)
-        pass: MY_PASSWORD // Tu contraseña de aplicación procesada sin espacios
+        user: MY_EMAIL,
+        pass: MY_PASSWORD
     },
     tls: {
-        rejectUnauthorized: false // SOLUCIÓN RAÍZ: Evita errores de certificados locales/antivirus
+        rejectUnauthorized: false
     }
 });
 
