@@ -18,16 +18,18 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configurar el "Transportador" de Nodemailer
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,              // Puerto SSL (Seguro)
-    secure: true,           // TRUE para puerto 465
+    service: 'gmail',       // Volvemos a 'service' que maneja mejor los puertos automáticos
     auth: {
         user: MY_EMAIL,
         pass: MY_PASSWORD
     },
     tls: {
         rejectUnauthorized: false
-    }
+    },
+    // FUERZA BRUTA DE RED:
+    family: 4,              // Forza a usar IPv4 (IPv6 suele fallar en Render)
+    connectionTimeout: 10000, // Espera hasta 10 segundos
+    greetingTimeout: 5000   // Espera 5s al saludo de Google
 });
 
 // Ruta para enviar correos
