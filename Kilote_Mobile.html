@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Kilote</title>
+    <link rel="icon" href="Imagenes/3.png" type="image/png">
+    <!-- Preload del video para que cargue durante la animación del splash -->
+    <link rel="preload" href="video.mp4?v=2" as="video" type="video/mp4">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /* Solo el logo centrado */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            animation: fadeInLogo 3.0s ease-out forwards;
+            opacity: 0;
+        }
+
+        .logo-container img {
+            max-width: 80%;
+            max-height: 80%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.4));
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeInLogo {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Brillo suave del logo */
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.3));
+            }
+
+            100% {
+                filter: drop-shadow(0 15px 60px rgba(255, 215, 0, 0.6));
+            }
+        }
+
+        /* Responsive para pantallas muy pequeñas */
+        @media screen and (max-width: 360px) {
+            .logo-container {
+                padding: 15px;
+            }
+
+            .logo-container img {
+                max-width: 90%;
+                max-height: 90%;
+            }
+        }
+
+        /* Orientación horizontal */
+        @media screen and (orientation: landscape) {
+            .logo-container img {
+                max-height: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SOLO el logo de Kilote -->
+    <div class="logo-container">
+        <img src="Imagenes/3.png" alt="Kilote Logo">
+    </div>
+
+    <!-- Script de Smart Preload -->
+    <script>
+        // Configuración
+        const MIN_DISPLAY_TIME = 3500; // Mínimo tiempo que dura el splash (ms)
+        const VIDEO_URL = 'video.mp4?v=2';
+        const REDIRECT_URL = './';
+        const TIMEOUT_FALLBACK = 7000; // Tiempo máximo de espera si el video falla (ms)
+
+        const startTime = Date.now();
+        let videoLoaded = false;
+
+        // 1. Promesa de Tiempo Mínimo (Animación)
+        const minTimePromise = new Promise(resolve => {
+            setTimeout(resolve, MIN_DISPLAY_TIME);
+        });
+
+        // 2. Promesa de Carga de Video (AJAX Blob)
+        // Usamos fetch para forzar la descarga binaria al caché del navegador
+        const loadVideoPromise = fetch(VIDEO_URL)
+            .then(response => {
+                if (response.ok) return response.blob();
+                throw new Error('Error carga video');
+            })
+            .then(() => {
+                videoLoaded = true;
+                console.log("Video precargado en caché");
+            })
+            .catch(err => console.log("Fallo precarga video:", err));
+
+        // 3. Lógica de Redirección
+        const proceed = () => {
+            // CRÍTICO: Marcar que ya vimos el splash para evitar bucle con index.html
+            sessionStorage.setItem('splashShown', 'true');
+            window.location.href = REDIRECT_URL;
+        };
+
+        // Promise.all asegura que ambas cosas ocurran antes de irse
+        Promise.all([minTimePromise, loadVideoPromise])
+            .then(proceed)
+            .catch(proceed); // Si algo falla, vamos igual
+
+        // 4. Safety Timeout (Por si la red se cuelga)
+        setTimeout(() => {
+            if (!videoLoaded) {
+                console.log("Timeout de seguridad activado");
+                proceed();
+            }
+        }, TIMEOUT_FALLBACK);
+    </script>
+</body>
+
+</html>

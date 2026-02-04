@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kilote - Menú Digital. Explora nuestros platos y haz tu pedido.">
+    <title>Kilote | Menú Digital</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header / Navigation (Consistente) -->
+    <header id="header">
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Imagenes/Kilote.png" alt="Kilote Logo" class="logo-img">
+                </a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="menu.html" class="nav-link active">Menú</a></li>
+                <li><a href="index.html#nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="index.html#reservas" class="btn-reserva">Reservar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Menu Section (Contenido Principal) -->
+    <section id="menu" class="section menu-section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-title scroll-reveal">
+                <h2>Nuestra Carta</h2>
+                <div class="divider"></div>
+                <p>Arte culinario seleccionado para ti</p>
+            </div>
+
+            <!-- Filtros de Categoría (Glass UI) -->
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="entradas">Entradas</button>
+                <button class="filter-btn" data-filter="fuertes">Platos Fuertes</button>
+                <button class="filter-btn" data-filter="bebidas">Bebidas</button>
+                <button class="filter-btn" data-filter="postres">Postres</button>
+            </div>
+
+            <!-- Grid de Platos (Nuevo Menú) -->
+            <div class="menu-grid">
+                <!-- Plato 1 -->
+                <article class="menu-item scroll-reveal delay-1" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151517.jpg" alt="Plato Nuevo 1">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 1</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 2 -->
+                <article class="menu-item scroll-reveal delay-2" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151524.jpg" alt="Plato Nuevo 2">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 2</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 3 -->
+                <article class="menu-item scroll-reveal delay-3" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151535.jpg" alt="Plato Nuevo 3">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 3</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 4 -->
+                <article class="menu-item scroll-reveal delay-1" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151543.jpg" alt="Plato Nuevo 4">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 4</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 5 -->
+                <article class="menu-item scroll-reveal delay-2" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151626.jpg" alt="Plato Nuevo 5">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 5</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 6 -->
+                <article class="menu-item scroll-reveal delay-3" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151635.jpg" alt="Plato Nuevo 6">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 6</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 7 -->
+                <article class="menu-item scroll-reveal delay-1" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151645.jpg" alt="Plato Nuevo 7">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 7</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 8 -->
+                <article class="menu-item scroll-reveal delay-2" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151706.jpg" alt="Plato Nuevo 8">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 8</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 9 -->
+                <article class="menu-item scroll-reveal delay-3" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151721.jpg" alt="Plato Nuevo 9">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 9</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 10 -->
+                <article class="menu-item scroll-reveal delay-1" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151730.jpg" alt="Plato Nuevo 10">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 10</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+
+                <!-- Plato 11 -->
+                <article class="menu-item scroll-reveal delay-2" data-category="fuertes">
+                    <div class="menu-img">
+                        <img src="Imagenes/NuevoMenu/Screenshot_20260203-151740.jpg" alt="Plato Nuevo 11">
+                        <span class="price">$ --.--</span>
+                    </div>
+                    <div class="menu-info">
+                        <h3>Plato Especial 11</h3>
+                        <p>Descripción pendiente de asignar.</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i></button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Kilote Restaurant. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Premium Product Modal (Rich Lightbox) -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-container">
+            <span class="modal-close">&times;</span>
+            <div class="modal-content-grid">
+                <div class="modal-image-wrapper">
+                    <img id="modal-img" src="" alt="Detalle del Plato">
+                </div>
+                <div class="modal-details">
+                    <h3 id="modal-title" class="modal-title">Nombre del Plato</h3>
+                    <p id="modal-desc" class="modal-description">Descripción detallada del plato.</p>
+                    <div class="modal-footer">
+                        <span id="modal-price" class="modal-price">$00.00</span>
+                        <button class="modal-action-btn">Excelente Elección</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

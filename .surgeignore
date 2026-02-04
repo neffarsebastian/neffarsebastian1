@@ -1,0 +1,7 @@
+node_modules
+.git
+server.js
+package.json
+package-lock.json
+verify_config.js
+*.log

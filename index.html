@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kilote - Experiencia gastronómica única. Sabor Auténtico.">
+    <title>Kilote | Sabor Auténtico</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Splash Screen Overlay (Integrado) -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-logo-container">
+            <img src="Imagenes/3.png" alt="Kilote Logo">
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header id="header">
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="#">
+                    <img src="Imagenes/Kilote.png" alt="Kilote Logo" class="logo-img">
+                </a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-list">
+                <li><a href="#" class="nav-link active">Inicio</a></li>
+                <li><a href="menu.html" class="nav-link">Menú</a></li>
+                <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="#reservas" class="btn-reserva">Reservar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Video de Fondo) -->
+    <section id="inicio" class="hero">
+        <video autoplay muted loop playsinline preload="auto" class="hero-video">
+            <source src="video.mp4?v=2" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1 class="hero-animate delay-1">Descubre el <span class="text-gold">Arte</span> del Sabor</h1>
+            <p class="hero-animate delay-2">Una experiencia culinaria que despierta tus sentidos.</p>
+            <div class="hero-btns hero-animate delay-3">
+                <a href="menu.html" class="btn-elegant-entry">Explorar la Carta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccción Chef / Nosotros (Breve) -->
+    <section id="nosotros" class="section about-section">
+        <div class="container about-container">
+            <div class="about-text scroll-reveal">
+                <h2>Nuestra Pasión</h2>
+                <div class="divider-left"></div>
+                <p>En <strong>Kilote</strong>, cada plato cuenta una historia. Nuestro equipo de chefs expertos fusiona
+                    técnicas tradicionales con innovación moderna para crear sabores inolvidables.</p>
+                <a href="#contacto" class="btn btn-outline">Contáctanos</a>
+            </div>
+            <div class="about-img scroll-reveal">
+                <img src="Imagenes/chef.png" alt="Nuestro Chef">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Duplicada (Nuestra Pasión 2) -->
+    <section id="nosotros-2" class="section about-section">
+        <div class="container about-container">
+            <div class="about-text scroll-reveal">
+                <h2>Sabor</h2>
+                <div class="divider-left"></div>
+                <p>Cada <strong>ingrediente</strong>,
+                    fresco y colorido es seleccionado cuidadosamente para crear una explosión de sabor y nutrición.
+                    🥑🥬 Desde el aguacate cremoso hasta el toque crujiente de los vegetales, esta ensalada lo tiene
+                    todo..</p>
+
+            </div>
+            <div class="about-img scroll-reveal">
+                <img src="Rrr.gif" alt="video">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title scroll-reveal">
+                <h2>Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="testimonial-grid">
+                <!-- Opinión 1 -->
+                <div class="testimonial-card scroll-reveal delay-1">
+                    <img src="Imagenes/opnion1.jpg" alt="Cliente Feliz" class="client-avatar">
+                    <p>"¡Simplemente espectacular! La pasta carbonara es, sin duda, la mejor que he probado en años."
+                    </p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <h4>- Sofía Martínez</h4>
+                </div>
+
+                <!-- Opinión 2 -->
+                <div class="testimonial-card scroll-reveal delay-2">
+                    <img src="Imagenes/opnion2.jpg" alt="Cliente Satisfecha" class="client-avatar">
+                    <p>"El ambiente es súper acogedor y el tiramisú es de otro mundo. ¡Volveré seguro!"</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <h4>- Laura Gómez</h4>
+                </div>
+
+                <!-- Opinión 3 -->
+                <div class="testimonial-card scroll-reveal delay-3">
+                    <img src="Imagenes/opnion4.jpg" alt="Cliente Disfrutando" class="client-avatar">
+                    <p>"Me encanta venir aquí a relajarme con un buen cóctel. La atención es de primera."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h4>- Valleria R.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info scroll-reveal">
+                    <h2>Visítanos</h2>
+                    <p><i class="fas fa-map-marker-alt"></i>Cl. 9 #6-14, Mocoa, Putumayo</p>
+                    <p><i class="fas fa-phone"></i> 3164823442</p>
+                    <p><i class="fas fa-envelope"></i> reservas@kilote.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form scroll-reveal">
+                    <form id="reservation-form">
+                        <h3>Reserva tu mesa</h3>
+                        <div class="input-group">
+                            <input type="text" name="name" placeholder="Nombre" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" name="phone" placeholder="Teléfono" required>
+                        </div>
+                        <div class="input-group">
+                            <textarea name="message" placeholder="Mensaje / Peticiones Especiales"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Reserva</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Kilote Restaurant. Todos los derechos reservados.</p>
+            <p>&copy; Desarrollador Neffar sebastian</p>
+            <p>Visuality Studios</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
