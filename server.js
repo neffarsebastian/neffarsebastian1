@@ -23,12 +23,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configurar el "Transportador" de Nodemailer
 const transporter = nodemailer.createTransport({
-    // ESTRATEGIA: CONEXIÓN EFÍMERA
-    // En lugar de mantener la línea abierta, conectamos, enviamos y cerramos.
-    pool: false,            // false = Conexión fresca por cada correo (Evita timeouts de idle)
+    // ESTRATEGIA: CONEXIÓN EFÍMERA + PACIENCIA
+    pool: false,
     host: 'smtp.gmail.com',
-    port: 465,              // Puerto SSL
-    secure: true,           // SSL activado
+    port: 465,
+    secure: true,
     auth: {
         user: MY_EMAIL,
         pass: MY_PASSWORD
@@ -37,7 +36,8 @@ const transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     },
     family: 4,              // IPv4
-    connectionTimeout: 10000 // 10s es suficiente para una conexión nueva
+    connectionTimeout: 60000, // 60s (CRÍTICO: Render es lento al iniciar conexión)
+    greetingTimeout: 30000    // 30s esperando el "Hola" de Google
 });
 
 // Ruta para enviar correos
