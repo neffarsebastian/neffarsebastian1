@@ -23,7 +23,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configurar el "Transportador" de Nodemailer
 const transporter = nodemailer.createTransport({
-    service: 'gmail',       // Volvemos a 'service' que maneja mejor los puertos automáticos
+    // ESTRATEGIA: CONEXIÓN EFÍMERA
+    // En lugar de mantener la línea abierta, conectamos, enviamos y cerramos.
+    pool: false,            // false = Conexión fresca por cada correo (Evita timeouts de idle)
+    host: 'smtp.gmail.com',
+    port: 465,              // Puerto SSL
+    secure: true,           // SSL activado
     auth: {
         user: MY_EMAIL,
         pass: MY_PASSWORD
@@ -31,13 +36,8 @@ const transporter = nodemailer.createTransport({
     tls: {
         rejectUnauthorized: false
     },
-    // FUERZA BRUTA DE RED (MODO PACIENCIA):
-    family: 4,
-    connectionTimeout: 60000, // 60 segundos (antes 10s era muy poco)
-    greetingTimeout: 30000,   // 30 segundos
-    socketTimeout: 60000,     // 60 segundos
-    logger: true,             // Ver logs detallados en Render
-    debug: true               // Ver handshake SMTP
+    family: 4,              // IPv4
+    connectionTimeout: 10000 // 10s es suficiente para una conexión nueva
 });
 
 // Ruta para enviar correos
