@@ -31,10 +31,13 @@ const transporter = nodemailer.createTransport({
     tls: {
         rejectUnauthorized: false
     },
-    // FUERZA BRUTA DE RED:
-    family: 4,              // Forza a usar IPv4 (IPv6 suele fallar en Render)
-    connectionTimeout: 10000, // Espera hasta 10 segundos
-    greetingTimeout: 5000   // Espera 5s al saludo de Google
+    // FUERZA BRUTA DE RED (MODO PACIENCIA):
+    family: 4,
+    connectionTimeout: 60000, // 60 segundos (antes 10s era muy poco)
+    greetingTimeout: 30000,   // 30 segundos
+    socketTimeout: 60000,     // 60 segundos
+    logger: true,             // Ver logs detallados en Render
+    debug: true               // Ver handshake SMTP
 });
 
 // Ruta para enviar correos
