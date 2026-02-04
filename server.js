@@ -18,9 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configurar el "Transportador" de Nodemailer
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com', // Servidor explícito
-    port: 587,              // Puerto estándar para STARTTLS
-    secure: false,          // false para puerto 587
+    host: 'smtp.gmail.com',
+    port: 465,              // Puerto SSL (Seguro)
+    secure: true,           // TRUE para puerto 465
     auth: {
         user: MY_EMAIL,
         pass: MY_PASSWORD
